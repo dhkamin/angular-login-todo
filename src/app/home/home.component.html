@@ -1,0 +1,48 @@
+<mat-toolbar color="warn">
+    <span>Home</span>
+    <span class="example-spacer"></span>
+    <button mat-button (click)="onClickLogout()">Logout</button>
+</mat-toolbar>
+<div >
+  <div  [dragula]='"bag-task1"' class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3%"  >
+    <mat-card   class="card-picture" *ngFor="let dataSource of dataSources; let i= index" (click)=" openDialogItem(dataSource,i)" >
+    
+      <mat-card-title  class="cardheader"  fxLayout.gt-xs="row" fxLayout.xs="column"  >
+        <span fxFlex="80%">{{dataSource.title}} {{i}} </span>
+      </mat-card-title>
+          
+           <div class="cardbody">
+            <p *ngIf="dataSource.type==='todo'"> {{ dataSource.description }} </p>
+            <img class="img" mat-card-image [src]= "dataSource.url_img" *ngIf="dataSource.type==='image'" >
+           
+            <mat-list   *ngFor="let lists of dataSource.list ">
+            <mat-list-item > {{lists.item}} </mat-list-item>
+            </mat-list>
+           </div>
+           <div class="cardfooter">
+            <mat-checkbox  [(ngModel)]="dataSource.done"  > Done</mat-checkbox>
+           </div>
+         
+      
+       
+     
+    </mat-card>
+  </div>
+
+  <button  mat-fab color="warn" class="app-fab--absolute" [matMenuTriggerFor]="menu">
+      <i class="material-icons">queue</i>
+  </button>
+      <mat-menu #menu="matMenu" class="menu--absolute"   >
+        <button  class="display"  color="warn" mat-button (click)="openDialog('list')" >
+          <i class="material-icons"  >list</i> List
+      </button>
+      <button  class="display"  color="warn" mat-button  (click)="openDialog('image')"  >
+        <i class="material-icons">photo</i>  Photo
+      </button>
+      <button  class="display" color="warn"  mat-button (click)="openDialog('todo')"  >
+          <i class="material-icons">input</i> Todo 
+      </button>
+   </mat-menu>
+
+ 
+</div>

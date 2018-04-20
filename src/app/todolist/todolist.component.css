@@ -1,0 +1,35 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+
+
+mat-grid-tile{
+  width: 30%;
+  height:5%;
+}
+.example-card{
+  
+  text-align: center;
+  margin: 0 auto;
+   
+  width:70%;
+  height:50%;
+  background: #cbcefb;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cbcefb", endColorstr="#000000"); /* pour IE < 10 et seulement le mode gradient linear*/
+background: -moz-radial-gradient(#cbcefb, #000000);
+background: -webkit-gradient(radial,center center,0,center center,100,from(#cbcefb),to(#000000));
+background: -webkit-linear-gradient(#cbcefb, #000000);
+background: -o-radial-gradient(#cbcefb, #000000);
+background: -ms-radial-gradient(#cbcefb, #000000);
+background: radial-gradient(#cbcefb, #000000);
+
+}

@@ -1,0 +1,117 @@
+
+<div *ngIf="data.type==='list'">
+<h1 mat-dialog-title>
+    <input matInput placeholder="title todo" [(ngModel)]="title" >
+</h1>
+
+<div mat-dialog-content class="content" > 
+   <p>
+  {{data.type}} </p>
+        <mat-selection-list #shoes>
+         <mat-list-option *ngFor="let listitem of listitems ">
+                        {{listitem.item}}
+                </mat-list-option>
+         </mat-selection-list>                       
+        <mat-form-field  class="example-full-width">
+                 <span matPrefix  color="warn"><i class="material-icons" >queue</i> &nbsp;&nbsp; &nbsp;</span>                       
+                 <input matInput placeholder="Description"   (change)="addinput(item)"  [(ngModel)]="item" required>
+        </mat-form-field> 
+       </div>  
+      
+<div mat-dialog-actions>
+  
+    <button mat-raised-button color="accent" (click)=" onNoClick()" >Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial (click)="confiraddlist()" >Confirm</button>
+ </div> 
+   
+
+</div>
+<div *ngIf="data.type==='image'">
+    {{data.type}}
+   
+  
+
+    <h1 mat-dialog-title class="example-full-width">
+        <input matInput placeholder="title todo" [(ngModel)]="title" >
+    </h1>
+    <div mat-dialog-content class="content" > 
+       <p> {{data.type}} </p>
+                <input   type="file"   name="image" (change)="fctimage($event)"   >
+                <img  [src]="path"  width="200px" height="100px">     
+           </div>  
+          
+    <div mat-dialog-actions>
+        <button mat-raised-button color="accent" (click)=" onNoClick()" >Cancel</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial >Confirm</button>
+     </div> 
+</div>
+<div *ngIf="data.type==='todo'">
+    <p> {{data.type}} </p>
+<div mat-dialog-content   >
+    
+    <mat-horizontal-stepper [linear]="isLinear">
+      <mat-step [stepControl]="nametodoFormGroup">
+        <form [formGroup]="nametodoFormGroup">
+            <div class="step-container">
+             <ng-template matStepLabel>Fill name todo</ng-template>
+              
+            <mat-form-field  class="example-full-width" >
+                <input matInput placeholder="Title todo" formControlName="title" [(ngModel)]="data.title" required>
+            </mat-form-field>
+            <div >
+                <button mat-raised-button color="accent" >Cancel</button>
+                <button mat-raised-button color="primary" type="button" matStepperNext>Next</button>
+            </div>
+          
+            </div>
+          
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="descriptionFormGroup">
+        <form [formGroup]="descriptionFormGroup">
+            <div class="step-container">
+                <ng-template matStepLabel>Fill description todo</ng-template>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Description" formControlName="description" [(ngModel)]="data.description" required>
+          </mat-form-field>
+          <div >
+            <button mat-raised-button color="warn" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" type="button" matStepperNext>Next</button>
+          </div>
+         </div>
+          
+        </form>
+      </mat-step>
+      <mat-step>
+
+        <form >
+            <div class="step-container">
+                <ng-template matStepLabel>Done</ng-template>
+                You are now done.
+               
+               <div mat-dialog-content class="fiche-row">
+                  <h1 mat-dialog-title> Description</h1>
+                  <h1 mat-dialog-title> {{data.description}}</h1>
+               </div> 
+               <div mat-dialog-content class="fiche-row">
+                  <h1 mat-dialog-title> Type </h1>
+                  <h1 mat-dialog-title> {{data.type}}</h1>
+               </div> 
+               <div mat-dialog-content class="fiche-row">
+                  <h1 mat-dialog-title> date creation</h1>
+                  <h1 mat-dialog-title> {{data.date}}</h1>
+               </div> 
+                <div mat-dialog-actions >
+                        <button mat-raised-button color="accent" (click)=" onNoClick()" >Cancel</button>
+                        <button mat-raised-button color="warn" matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Confirm</button>
+                  </div> 
+                  </div>
+        </form>
+         
+        
+      </mat-step>
+    </mat-horizontal-stepper>
+</div>
+
+</div>

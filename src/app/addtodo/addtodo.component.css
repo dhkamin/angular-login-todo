@@ -1,0 +1,41 @@
+mat-card{
+    width: 50%;
+    
+    margin:0 auto;
+  
+  }
+
+  .mat-basic-container {
+    padding: 100px;
+   
+  }
+ 
+  .inputform{
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+.title{
+    align-items: center;
+    display: flex;
+    margin: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 56px;
+  }
+ 
+
+  mat-card{
+  
+  background: #cbcefb;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cbcefb", endColorstr="#000000"); /* pour IE < 10 et seulement le mode gradient linear*/
+  background: -moz-radial-gradient(#cbcefb, #000000);
+  background: -webkit-gradient(radial,center center,0,center center,100,from(#cbcefb),to(#000000));
+  background: -webkit-linear-gradient(#cbcefb, #000000);
+  background: -o-radial-gradient(#cbcefb, #000000);
+  background: -ms-radial-gradient(#cbcefb, #000000);
+  background: radial-gradient(#cbcefb, #000000);
+}

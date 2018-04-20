@@ -1,0 +1,26 @@
+
+<h1 mat-dialog-title>
+    <mat-input-container >
+        <input matInput [(ngModel)]="data.title">
+    </mat-input-container> 
+</h1>
+<div mat-dialog-content > 
+    <img class="img" mat-card-image [src]=" data.url_img" *ngIf="data.type==='img'" >
+        <mat-selection-list >
+         <mat-list-option *ngFor="let list of data.list ,let  i= index ">
+                        {{list.item}}
+                </mat-list-option>
+         </mat-selection-list>
+    <p  *ngIf="data.type==='todo'" > {{data.description}}  </p>     
+ </div>  
+ <mat-checkbox  [(ngModel)]="data.delete">Check me! if you wont te delete</mat-checkbox>
+
+<div mat-dialog-actions>
+    
+    <button mat-raised-button color="accent" (click)=" onNoClick()" >Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial >Confirm</button>
+ </div> 
+   
+
+
+
